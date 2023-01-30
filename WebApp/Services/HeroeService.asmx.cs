@@ -23,7 +23,7 @@ namespace WebApp.Services
     // [System.Web.Script.Services.ScriptService]
     public class HeroeService : System.Web.Services.WebService
     {
-        public SOAPKeyAuth sOAPKeyAuth;
+        public SOAPKeyAuth sOAPKeyAuth = new SOAPKeyAuth();
         private ContentHTML contentHTML = new ContentHTML();
         private MessageVO messageVO = new MessageVO();
 
@@ -39,7 +39,7 @@ namespace WebApp.Services
             HeroeServiceSelect heroeServiceSelect = new HeroeServiceSelect();
             try
             {
-                if (sOAPKeyAuth == null || (sOAPKeyAuth != null && !sOAPKeyAuth.IsAuthorized()))
+                if (!sOAPKeyAuth.IsAuthorized())
                 {
                     messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
                     heroeServiceSelect.MessageVO = messageVO;
@@ -75,7 +75,7 @@ namespace WebApp.Services
             HeroeServiceInsert heroeServiceInsert = new HeroeServiceInsert();
             try
             {
-                if (sOAPKeyAuth == null || (sOAPKeyAuth != null && !sOAPKeyAuth.IsAuthorized()))
+                if (!sOAPKeyAuth.IsAuthorized())
                 {
                     messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
                     heroeServiceInsert.MessageVO = messageVO;
@@ -165,7 +165,7 @@ namespace WebApp.Services
             HeroeServiceUpdate heroeServiceUpdate = new HeroeServiceUpdate();
             try
             {
-                if (sOAPKeyAuth == null || (sOAPKeyAuth != null && !sOAPKeyAuth.IsAuthorized()))
+                if (!sOAPKeyAuth.IsAuthorized())
                 {
                     messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
                     heroeServiceUpdate.MessageVO = messageVO;
@@ -258,7 +258,7 @@ namespace WebApp.Services
             HeroeServiceDelete heroeServiceDelete = new HeroeServiceDelete();
             try
             {
-                if (sOAPKeyAuth == null || (sOAPKeyAuth != null && !sOAPKeyAuth.IsAuthorized()))
+                if (!sOAPKeyAuth.IsAuthorized())
                 {
                     messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
                     heroeServiceDelete.MessageVO = messageVO;
@@ -294,7 +294,7 @@ namespace WebApp.Services
             HeroeServiceList heroeServiceList = new HeroeServiceList();
             try
             {
-                if (sOAPKeyAuth == null || (sOAPKeyAuth != null && !sOAPKeyAuth.IsAuthorized()))
+                if (!sOAPKeyAuth.IsAuthorized())
                 {
                     messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
                     heroeServiceList.MessageVO = messageVO;
@@ -345,8 +345,16 @@ namespace WebApp.Services
             HeroeServiceTotalRecords heroeServiceTotalRecords = new HeroeServiceTotalRecords();
             try
             {
-                var totalRecords = HeroeImpl.TotalRecords();
-                heroeServiceTotalRecords.TotalRecordss = totalRecords;
+                if (!sOAPKeyAuth.IsAuthorized())
+                {
+                    messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
+                    heroeServiceTotalRecords.MessageVO = messageVO;
+                }
+                else
+                {
+                    var totalRecords = HeroeImpl.TotalRecords();
+                    heroeServiceTotalRecords.TotalRecordss = totalRecords;
+                }
             }
             catch (Exception ex)
             {
@@ -367,8 +375,16 @@ namespace WebApp.Services
             HeroeServiceExcel heroeServiceExcel = new HeroeServiceExcel();
             try
             {
-                var excel = HeroeImpl.Excel();
-                heroeServiceExcel.Excel = excel;
+                if (!sOAPKeyAuth.IsAuthorized())
+                {
+                    messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
+                    heroeServiceExcel.MessageVO = messageVO;
+                }
+                else
+                {
+                    var excel = HeroeImpl.Excel();
+                    heroeServiceExcel.Excel = excel;
+                }                
             }
             catch (Exception ex)
             {
@@ -389,8 +405,16 @@ namespace WebApp.Services
             HeroeServicePDF heroeServicePDF = new HeroeServicePDF();
             try
             {
-                var pdf = HeroeImpl.PDF();
-                heroeServicePDF.PDF = pdf;
+                if (!sOAPKeyAuth.IsAuthorized())
+                {
+                    messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
+                    heroeServicePDF.MessageVO = messageVO;
+                }
+                else
+                {
+                    var pdf = HeroeImpl.PDF();
+                    heroeServicePDF.PDF = pdf;
+                }                
             }
             catch (Exception ex)
             {

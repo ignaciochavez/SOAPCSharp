@@ -16,7 +16,7 @@ namespace Business.Tool
 
         public static string GetApplicationDirectory()
         {
-            return System.AppDomain.CurrentDomain.BaseDirectory.Replace("WebAppUnitTests\\bin\\Debug", "WebAPI\\");
+            return System.AppDomain.CurrentDomain.BaseDirectory.Replace("WebAppUnitTests\\bin\\Debug", "WebApp\\");
         }
                 
         public static string GetAppSettings(string keyWebConfig)
