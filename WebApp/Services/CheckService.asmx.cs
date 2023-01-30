@@ -19,7 +19,7 @@ namespace WebApp.Services
     // [System.Web.Script.Services.ScriptService]
     public class CheckService : System.Web.Services.WebService
     {
-        public SOAPKeyAuth sOAPKeyAuth = new SOAPKeyAuth();
+        public SOAPKeyAuth sOAPKeyAuth;
         private ContentHTML contentHTML = new ContentHTML();
         private MessageVO messageVO = new MessageVO();
 
@@ -58,7 +58,7 @@ namespace WebApp.Services
         {
             try
             {
-                if (!sOAPKeyAuth.IsAuthorized())
+                if (sOAPKeyAuth == null || (sOAPKeyAuth != null && !sOAPKeyAuth.IsAuthorized()))
                 {
                     messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
                 }

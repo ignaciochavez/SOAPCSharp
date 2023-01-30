@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WebApp.Services;
 using Business.Tool;
+using WebApp.Configurations;
 
 namespace WebAppUnitTests
 {
@@ -29,6 +30,7 @@ namespace WebAppUnitTests
         public void CheckControllerCheckAuthMethodIsCorrect()
         {
             CheckService checkService = new CheckService();
+            checkService.sOAPKeyAuth = new SOAPKeyAuth();
             checkService.sOAPKeyAuth.Key = key;
             MessageVO messageVO = checkService.CheckAuth();
             Assert.IsNotNull(messageVO);

@@ -23,6 +23,7 @@ namespace WebAppUnitTests
         public void ExampleServiceSelectMethodIsEmptyParameters()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceSelect exampleServiceSelect = exampleService.Select(0);
             Assert.IsNotNull(exampleServiceSelect.MessageVO);
@@ -36,6 +37,7 @@ namespace WebAppUnitTests
         public void ExampleServiceSelectMethodIsCorrectAndNotExist()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceSelect exampleServiceSelect = exampleService.Select(100);
             Assert.IsNull(exampleServiceSelect.Example);
@@ -49,6 +51,7 @@ namespace WebAppUnitTests
         public void ExampleServiceSelectMethodIsCorrect()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceSelect exampleServiceSelect = exampleService.Select(1);
             Assert.IsNotNull(exampleServiceSelect.Example);
@@ -66,6 +69,7 @@ namespace WebAppUnitTests
         public void ExampleServiceInsertMethodIsNullObject()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceInsert exampleServiceInsert = exampleService.Insert(null);
             Assert.IsNotNull(exampleServiceInsert.MessageVO);
@@ -79,6 +83,7 @@ namespace WebAppUnitTests
         public void ExampleServiceInsertMethodIsEmptyParametersOfObject()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceInsert exampleServiceInsert = exampleService.Insert(new ExampleInsertDTO() { Rut = string.Empty, Name = string.Empty, LastName = string.Empty, BirthDate = DateTimeOffset.MinValue, Active = false, Password = string.Empty });
             Assert.IsNotNull(exampleServiceInsert.MessageVO);
@@ -93,6 +98,7 @@ namespace WebAppUnitTests
         public void ExampleServiceInsertMethodIsInvalidParametersOfObject()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceInsert exampleServiceInsert = exampleService.Insert(new ExampleInsertDTO() { Rut = "12332231123", Name = "Test Test Test Test Test Test Test Test Test Test", LastName = "Test Test Test Test Test Test Test Test Test Test", BirthDate = DateTimeOffset.Now.AddDays(1), Active = false, Password = "Test Test Test Test" });
             Assert.IsNotNull(exampleServiceInsert.MessageVO);
@@ -106,6 +112,7 @@ namespace WebAppUnitTests
         public void ExampleServiceInsertMethodIsExist()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceInsert exampleServiceInsert = exampleService.Insert(new ExampleInsertDTO() { Rut = "1-9", Name = "Pedro", LastName = "Gutierrez", BirthDate = DateTimeOffset.UtcNow.Date, Active = true, Password = "1234qwer" });
             Assert.IsNotNull(exampleServiceInsert.MessageVO);
@@ -119,6 +126,7 @@ namespace WebAppUnitTests
         public void ExampleServiceInsertMethodIsCorrect()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceInsert exampleServiceInsert = exampleService.Insert(new ExampleInsertDTO() { Rut = "76-0", Name = "Emanuel", LastName = "Leiva", BirthDate = DateTimeOffset.UtcNow.Date, Active = true, Password = "4321rewq" });
             Assert.IsNotNull(exampleServiceInsert.Example);
@@ -136,6 +144,7 @@ namespace WebAppUnitTests
         public void ExampleServiceUpdateMethodIsNullObject()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceUpdate exampleServiceUpdate = exampleService.Update(null);
             Assert.IsNotNull(exampleServiceUpdate.MessageVO);
@@ -149,6 +158,7 @@ namespace WebAppUnitTests
         public void ExampleServiceUpdateMethodIsEmptyParametersOfObject()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceUpdate exampleServiceUpdate = exampleService.Update(new Example() { Id = 0, Rut = string.Empty, Name = string.Empty, LastName = string.Empty, BirthDate = DateTimeOffset.MinValue, Active = false, Password = string.Empty });
             Assert.IsNotNull(exampleServiceUpdate.MessageVO);
@@ -162,6 +172,7 @@ namespace WebAppUnitTests
         public void ExampleServiceUpdateMethodIsInvalidParametersOfObject()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceUpdate exampleServiceUpdate = exampleService.Update(new Example() { Id = 0, Rut = "12332231123123", Name = "Test Test Test Test Test Test Test Test Test Test", LastName = "Test Test Test Test Test Test Test Test Test Test", BirthDate = DateTimeOffset.Now.AddDays(1), Active = false, Password = "Test Test Test Test" });
             Assert.IsNotNull(exampleServiceUpdate.MessageVO);
@@ -175,6 +186,7 @@ namespace WebAppUnitTests
         public void ExampleServiceUpdateMethodIsNotExist()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceUpdate exampleServiceUpdate = exampleService.Update(new Example() { Id = 100, Rut = "77-9", Name = "Leonel", LastName = "Gonzalez", BirthDate = DateTimeOffset.UtcNow.Date, Active = true, Password = "vcxz9876" });
             Assert.IsFalse(exampleServiceUpdate.Updated);
@@ -188,6 +200,7 @@ namespace WebAppUnitTests
         public void ExampleServiceUpdateMethodIsCorrect()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceUpdate exampleServiceUpdate = exampleService.Update(new Example() { Id = 2, Rut = "2-7", Name = "Pedro", LastName = "Gutierrez", BirthDate = DateTimeOffset.UtcNow.Date, Active = true, Password = "1234qwer" });
             Assert.IsTrue(exampleServiceUpdate.Updated);
@@ -205,6 +218,7 @@ namespace WebAppUnitTests
         public void ExampleServiceDeleteMethodIsInvalidParameters()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceDelete exampleServiceDelete = exampleService.Delete(0);
             Assert.IsNotNull(exampleServiceDelete.MessageVO);
@@ -218,6 +232,7 @@ namespace WebAppUnitTests
         public void ExampleServiceDeleteMethodIsCorrectAndNotExist()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceDelete exampleServiceDelete = exampleService.Delete(100);
             Assert.IsFalse(exampleServiceDelete.Delete);
@@ -231,6 +246,7 @@ namespace WebAppUnitTests
         public void ExampleServiceDeleteMethodIsCorrect()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceDelete exampleServiceDelete = exampleService.Delete(1);
             Assert.IsTrue(exampleServiceDelete.Delete);
@@ -248,6 +264,7 @@ namespace WebAppUnitTests
         public void ExampleServiceListMethodIsNullObject()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceList exampleServiceList = exampleService.List(null);
             Assert.IsNotNull(exampleServiceList.MessageVO);
@@ -261,6 +278,7 @@ namespace WebAppUnitTests
         public void ExampleServiceListMethodIsInvalidParametersOfObject()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceList exampleServiceList = exampleService.List(new ExampleListDTO() { PageIndex = 0, PageSize = 0 });
             Assert.IsNotNull(exampleServiceList.MessageVO);
@@ -274,6 +292,7 @@ namespace WebAppUnitTests
         public void ExampleServiceListMethodIsCorrect()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceList exampleServiceList = exampleService.List(new ExampleListDTO() { PageIndex = 1, PageSize = 10 });
             Assert.IsNotNull(exampleServiceList.Examples);
@@ -291,6 +310,7 @@ namespace WebAppUnitTests
         public void ExampleServiceTotalRecordsMethodIsCorrect()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceTotalRecords exampleServiceTotalRecords = exampleService.TotalRecords();
             Assert.AreNotEqual(exampleServiceTotalRecords.TotalRecords, 0);
@@ -308,6 +328,7 @@ namespace WebAppUnitTests
         public void ExampleServiceExcelMethodIsCorrect()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServiceExcel exampleServiceExcel = exampleService.Excel();
             Assert.IsNotNull(exampleServiceExcel.Excel);
@@ -325,6 +346,7 @@ namespace WebAppUnitTests
         public void ExampleServicePDFMethodIsCorrect()
         {
             ExampleService exampleService = new ExampleService();
+            exampleService.sOAPKeyAuth = new SOAPKeyAuth();
             exampleService.sOAPKeyAuth.Key = key;
             ExampleServicePDF exampleServicePDF = exampleService.PDF();
             Assert.IsNotNull(exampleServicePDF.PDF);

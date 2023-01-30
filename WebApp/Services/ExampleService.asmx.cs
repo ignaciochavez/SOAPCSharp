@@ -24,7 +24,7 @@ namespace WebApp.Services
     public class ExampleService : System.Web.Services.WebService
     {
 
-        public SOAPKeyAuth sOAPKeyAuth = new SOAPKeyAuth();
+        public SOAPKeyAuth sOAPKeyAuth;
         private ContentHTML contentHTML = new ContentHTML();
         private MessageVO messageVO = new MessageVO();
 
@@ -40,7 +40,7 @@ namespace WebApp.Services
             ExampleServiceSelect exampleServiceSelect = new ExampleServiceSelect();
             try
             {
-                if (!sOAPKeyAuth.IsAuthorized())
+                if (sOAPKeyAuth == null || (sOAPKeyAuth != null && !sOAPKeyAuth.IsAuthorized()))
                 {
                     messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
                     exampleServiceSelect.MessageVO = messageVO;
@@ -76,7 +76,7 @@ namespace WebApp.Services
             ExampleServiceInsert exampleServiceInsert = new ExampleServiceInsert();
             try
             {
-                if (!sOAPKeyAuth.IsAuthorized())
+                if (sOAPKeyAuth == null || (sOAPKeyAuth != null && !sOAPKeyAuth.IsAuthorized()))
                 {
                     messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
                     exampleServiceInsert.MessageVO = messageVO;
@@ -156,7 +156,7 @@ namespace WebApp.Services
             ExampleServiceUpdate exampleServiceUpdate = new ExampleServiceUpdate();
             try
             {
-                if (!sOAPKeyAuth.IsAuthorized())
+                if (sOAPKeyAuth == null || (sOAPKeyAuth != null && !sOAPKeyAuth.IsAuthorized()))
                 {
                     messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
                     exampleServiceUpdate.MessageVO = messageVO;
@@ -239,7 +239,7 @@ namespace WebApp.Services
             ExampleServiceDelete exampleServiceDelete = new ExampleServiceDelete();
             try
             {
-                if (!sOAPKeyAuth.IsAuthorized())
+                if (sOAPKeyAuth == null || (sOAPKeyAuth != null && !sOAPKeyAuth.IsAuthorized()))
                 {
                     messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
                     exampleServiceDelete.MessageVO = messageVO;
@@ -275,7 +275,7 @@ namespace WebApp.Services
             ExampleServiceList exampleServiceList = new ExampleServiceList();
             try
             {
-                if (!sOAPKeyAuth.IsAuthorized())
+                if (sOAPKeyAuth == null || (sOAPKeyAuth != null && !sOAPKeyAuth.IsAuthorized()))
                 {
                     messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
                     exampleServiceList.MessageVO = messageVO;
@@ -326,7 +326,7 @@ namespace WebApp.Services
             ExampleServiceTotalRecords exampleServiceTotalRecords = new ExampleServiceTotalRecords();
             try
             {
-                if (!sOAPKeyAuth.IsAuthorized())
+                if (sOAPKeyAuth == null || (sOAPKeyAuth != null && !sOAPKeyAuth.IsAuthorized()))
                 {
                     messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
                     exampleServiceTotalRecords.MessageVO = messageVO;
@@ -356,7 +356,7 @@ namespace WebApp.Services
             ExampleServiceExcel exampleServiceExcel = new ExampleServiceExcel();
             try
             {
-                if (!sOAPKeyAuth.IsAuthorized())
+                if (sOAPKeyAuth == null || (sOAPKeyAuth != null && !sOAPKeyAuth.IsAuthorized()))
                 {
                     messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
                     exampleServiceExcel.MessageVO = messageVO;
@@ -386,7 +386,7 @@ namespace WebApp.Services
             ExampleServicePDF exampleServicePDF = new ExampleServicePDF();
             try
             {
-                if (!sOAPKeyAuth.IsAuthorized())
+                if (sOAPKeyAuth == null || (sOAPKeyAuth != null && !sOAPKeyAuth.IsAuthorized()))
                 {
                     messageVO.SetMessage(0, contentHTML.GetInnerTextById("notAuthorizedTitle"), contentHTML.GetInnerTextById("notAuthorized"));
                     exampleServicePDF.MessageVO = messageVO;

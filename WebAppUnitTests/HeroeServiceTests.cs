@@ -5,6 +5,7 @@ using WebApp.Services;
 using WebApp.Models;
 using Business.DTO;
 using Business.Entity;
+using WebApp.Configurations;
 
 namespace WebAppUnitTests
 {
@@ -22,6 +23,7 @@ namespace WebAppUnitTests
         public void HeroeServiceSelectMethodIsEmptyParameters()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceSelect heroeServiceSelect = heroeService.Select(0);
             Assert.IsNotNull(heroeServiceSelect.MessageVO);
@@ -35,6 +37,7 @@ namespace WebAppUnitTests
         public void HeroeServiceSelectMethodIsCorrectAndNotExist()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceSelect heroeServiceSelect = heroeService.Select(100);
             Assert.IsNull(heroeServiceSelect.Heroe);
@@ -48,6 +51,7 @@ namespace WebAppUnitTests
         public void HeroeServiceSelectMethodIsCorrect()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceSelect heroeServiceSelect = heroeService.Select(2);
             Assert.IsNotNull(heroeServiceSelect.Heroe);
@@ -65,6 +69,7 @@ namespace WebAppUnitTests
         public void HeroeServiceInsertMethodIsNullObject()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceInsert heroeServiceInsert = heroeService.Insert(null);
             Assert.IsNotNull(heroeServiceInsert.MessageVO);
@@ -78,6 +83,7 @@ namespace WebAppUnitTests
         public void HeroeServiceInsertMethodIsEmptyParametersOfObject()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceInsert heroeServiceInsert = heroeService.Insert(new HeroeInsertDTO() { Name = string.Empty, Home = string.Empty, Appearance = DateTimeOffset.MinValue, Description = string.Empty, ImgBase64String = string.Empty });
             Assert.IsNotNull(heroeServiceInsert.MessageVO);
@@ -91,6 +97,7 @@ namespace WebAppUnitTests
         public void HeroeServiceInsertMethodIsInvalidParametersOfObject()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceInsert heroeServiceInsert = heroeService.Insert(new HeroeInsertDTO() { Name = "Test Test Test Test Test Test Test Test Test Test", Home = "Test Test Test Test Test Test Test Test", Appearance = DateTimeOffset.Now.AddDays(1), Description = Useful.GetPngToBase64String($"{Useful.GetApplicationDirectory()}Contents\\soap-200.png"), ImgBase64String = "1234asdf" });
             Assert.IsNotNull(heroeServiceInsert.MessageVO);
@@ -104,6 +111,7 @@ namespace WebAppUnitTests
         public void HeroeServiceInsertMethodIsExist()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceInsert heroeServiceInsert = heroeService.Insert(new HeroeInsertDTO() { Name = "Batman", Home = "DC", Appearance = new DateTimeOffset(new DateTime(1941, 11, 1)), Description = "El poder más reconocido de Aquaman es la capacidad telepática para comunicarse con la vida marina, la cual puede convocar a grandes distancias.", ImgBase64String = Useful.GetPngToBase64String($"{Useful.GetApplicationDirectory()}Contents\\soap-200.png") });
             Assert.IsNotNull(heroeServiceInsert.MessageVO);
@@ -117,6 +125,7 @@ namespace WebAppUnitTests
         public void HeroeServiceInsertMethodIsCorrect()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceInsert heroeServiceInsert = heroeService.Insert(new HeroeInsertDTO() { Name = "Thor", Home = "Marvel", Appearance = new DateTimeOffset(new DateTime(1962, 8, 1)), Description = "El personaje, que se basa en la deidad nórdica homónima, es el dios del trueno asgardiano poseedor del martillo encantado, Mjolnir, que le otorga capacidad de volar y manipular el clima entre sus otros atributos sobrehumanos, además de concentrar su poder.", ImgBase64String = Useful.GetPngToBase64String($"{Useful.GetApplicationDirectory()}Contents\\soap-200.png") });
             Assert.IsNotNull(heroeServiceInsert.Heroe);
@@ -134,6 +143,7 @@ namespace WebAppUnitTests
         public void HeroeServiceUpdateMethodIsNullObject()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceUpdate heroeServiceUpdate = heroeService.Update(null);
             Assert.IsNotNull(heroeServiceUpdate.MessageVO);
@@ -147,6 +157,7 @@ namespace WebAppUnitTests
         public void HeroeServiceUpdateMethodIsEmptyParametersOfObject()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceUpdate heroeServiceUpdate = heroeService.Update(new Heroe() { Id = 0, Name = string.Empty, Home = string.Empty, Appearance = DateTimeOffset.MinValue, Description = string.Empty, ImgBase64String = string.Empty });
             Assert.IsNotNull(heroeServiceUpdate.MessageVO);
@@ -160,6 +171,7 @@ namespace WebAppUnitTests
         public void HeroeServiceUpdateMethodIsInvalidParametersOfObject()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceUpdate heroeServiceUpdate = heroeService.Update(new Heroe() { Id = -1, Name = "Test Test Test Test Test Test Test Test Test Test", Home = "Test Test Test Test Test Test Test Test", Appearance = DateTimeOffset.Now.AddDays(1), Description = Useful.GetPngToBase64String($"{Useful.GetApplicationDirectory()}Contents\\soap-200.png"), ImgBase64String = "1234asdf" });
             Assert.IsNotNull(heroeServiceUpdate.MessageVO);
@@ -173,6 +185,7 @@ namespace WebAppUnitTests
         public void HeroeServiceUpdateMethodIsNotExist()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceUpdate heroeServiceUpdate = heroeService.Update(new Heroe() { Id = 100, Name = "Superman", Home = "DC", Appearance = new DateTimeOffset(new DateTime(1938, 6, 1)), Description = "Superman es un hombre alto, musculoso, hombre de raza blanca con ojos azules y pelo negro corto con un rizo. Tiene habilidades sobrehumanas, como una fuerza increíble y una piel impermeable.", ImgBase64String = Useful.GetPngToBase64String($"{Useful.GetApplicationDirectory()}Contents\\soap-200.png") });
             Assert.IsFalse(heroeServiceUpdate.Update);
@@ -186,6 +199,7 @@ namespace WebAppUnitTests
         public void HeroeServiceUpdateMethodIsCorrect()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceUpdate heroeServiceUpdate = heroeService.Update(new Heroe() { Id = 2, Home = "DC", Name = "Batman", Appearance = new DateTimeOffset(new DateTime(1941, 11, 1)), Description = "El poder más reconocido de Aquaman es la capacidad telepática para comunicarse con la vida marina, la cual puede convocar a grandes distancias.", ImgBase64String = Useful.GetPngToBase64String($"{Useful.GetApplicationDirectory()}Contents\\IMG\\batman.png") });
             Assert.IsTrue(heroeServiceUpdate.Update);
@@ -203,6 +217,7 @@ namespace WebAppUnitTests
         public void HeroeServiceDeleteMethodIsInvalidParameters()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceDelete heroeServiceDelete = heroeService.Delete(0);
             Assert.IsNotNull(heroeServiceDelete.MessageVO);
@@ -216,6 +231,7 @@ namespace WebAppUnitTests
         public void HeroeServiceDeleteMethodIsCorrectAndNotExist()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceDelete heroeServiceDelete = heroeService.Delete(100);
             Assert.IsFalse(heroeServiceDelete.Delete);
@@ -229,6 +245,7 @@ namespace WebAppUnitTests
         public void HeroeServiceDeleteMethodIsCorrect()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceDelete heroeServiceDelete = heroeService.Delete(1);
             Assert.IsTrue(heroeServiceDelete.Delete);
@@ -246,6 +263,7 @@ namespace WebAppUnitTests
         public void HeroeServiceListMethodIsNullObject()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceList heroeServiceList = heroeService.List(null);
             Assert.IsNotNull(heroeServiceList.MessageVO);
@@ -259,6 +277,7 @@ namespace WebAppUnitTests
         public void HeroeServiceListMethodIsInvalidParametersOfObject()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceList heroeServiceList = heroeService.List(new HeroeListDTO() { PageIndex = 0, PageSize = 0 });
             Assert.IsNotNull(heroeServiceList.MessageVO);
@@ -272,6 +291,7 @@ namespace WebAppUnitTests
         public void HeroeServiceListMethodIsCorrect()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceList heroeServiceList = heroeService.List(new HeroeListDTO() { PageIndex = 1, PageSize = 10 });
             Assert.IsNotNull(heroeServiceList.Heroes);
@@ -289,6 +309,7 @@ namespace WebAppUnitTests
         public void HeroeServiceTotalRecordsMethodIsCorrect()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceTotalRecords heroeServiceTotalRecords = heroeService.TotalRecords();
             Assert.AreNotEqual(heroeServiceTotalRecords.TotalRecordss, 0);
@@ -306,6 +327,7 @@ namespace WebAppUnitTests
         public void HeroeServiceExcelMethodIsCorrect()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServiceExcel heroeServiceExcel = heroeService.Excel();
             Assert.IsNotNull(heroeServiceExcel.Excel);
@@ -323,6 +345,7 @@ namespace WebAppUnitTests
         public void HeroeServicePDFMethodIsCorrect()
         {
             HeroeService heroeService = new HeroeService();
+            heroeService.sOAPKeyAuth = new SOAPKeyAuth();
             heroeService.sOAPKeyAuth.Key = key;
             HeroeServicePDF heroeServicePDF = heroeService.PDF();
             Assert.IsNotNull(heroeServicePDF.PDF);
