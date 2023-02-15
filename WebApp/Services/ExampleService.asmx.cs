@@ -205,7 +205,7 @@ namespace WebApp.Services
                     }
                     else
                     {
-                        bool existByRutAndNotSameEntity = ExampleImpl.ExistByRutAndNotSameEntity(new ExampleExistByRutAndNotSameEntityDTO() { Id = example.Id, Rut = example.Rut.Replace(".", "") });
+                        bool existByRutAndNotSameEntity = ExampleImpl.ExistByRutAndNotSameEntity(new ExampleExistByRutAndNotSameEntityDTO(example.Id, example.Rut.Replace(".", "")));
                         if (existByRutAndNotSameEntity)
                         {
                             messageVO.SetMessage(2, contentHTML.GetInnerTextById("requeridTitle"), contentHTML.GetInnerTextById("entityExistsByParameterAndIsNotTheSameEntity").Replace("{0}", "Example").Replace("{1}", "Rut").Replace("{2}", "Example"));

@@ -17,7 +17,12 @@ namespace WebApp.Configurations
         {
 
         }
-        
+
+        public SOAPKeyAuth(string key)
+        {
+            Key = key;
+        }
+
         public bool IsAuthorized()
         {
             if (string.IsNullOrWhiteSpace(Key))

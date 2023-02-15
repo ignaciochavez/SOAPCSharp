@@ -30,8 +30,7 @@ namespace WebAppUnitTests
         public void CheckControllerCheckAuthMethodIsCorrect()
         {
             CheckService checkService = new CheckService();
-            checkService.sOAPKeyAuth = new SOAPKeyAuth();
-            checkService.sOAPKeyAuth.Key = key;
+            checkService.sOAPKeyAuth = new SOAPKeyAuth(key);
             MessageVO messageVO = checkService.CheckAuth();
             Assert.IsNotNull(messageVO);
             checkService.Dispose();
